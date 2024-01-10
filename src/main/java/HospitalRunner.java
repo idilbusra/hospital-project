@@ -15,27 +15,24 @@ public class HospitalRunner {
 
     private static void startApp() {
         do {
-            System.out.print("1. Doctor selections\n" +
-                    "2. Patient selections\n" +
+            System.out.print("1. Doctor Find\n" +
+                    "2. Patient Find\n" +
+                    "3. Exit\n" +
                     "What is your choice ? : ");
             int choice = intScanner(scan);
             if (choice == 1) {
-                System.out.print("1. Doctor Set Selection\n" +
-                        "2. Doctor Find Selections\n" +
-                        "What is your choice ? : ");
-                int choiceDoctorSelection = intScanner(scan);
-                if (choiceDoctorSelection == 1) {
-                    //burada doktoru nasil set edecegiz ?
-                } else if (choiceDoctorSelection == 2) {
-                    setDoctorTitle();
-                } else {
-                    System.out.println("Please select good option !");
-                }
+                int choice1 = takePatientContion();
+                setDoctorTitle(choice1);
 
             } else if (choice == 2) {
+                int choicePatientSelection = takePatientContion();
+                setPatientActuelCondition(choicePatientSelection);
 
                 setDoctorTitle();
 
+            }else if (choice == 3) {
+                System.out.println("Logging Out");
+                break;
 
             } else {
                 System.out.println("Please select good option !");
@@ -61,7 +58,6 @@ public class HospitalRunner {
         } else {
             return "Wrong Title !";
         }
-
 
     }
 
