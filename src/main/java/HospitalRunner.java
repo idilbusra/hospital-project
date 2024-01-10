@@ -72,7 +72,22 @@ public class HospitalRunner {
         }
     }
 
-    public static void setDoctorTitle() {
+    public static void setDoctorTitle(int choice) {
+
+        String patientsCondition = dataBase.patientCondition[choice - 1];
+        String title = doctorTitle(patientsCondition);
+        findDoctor(title);
+    }
+
+    public static void setPatientActuelCondition(int choice) {
+
+        String patientsCondition = dataBase.patientCondition[choice - 1];
+
+        findPatient(patientsCondition);
+    }
+
+
+    public static int takePatientContion() {
         System.out.print("What is your problem ?\n" +
                 "1. Allergy\n" +
                 "2. Headache\n" +
@@ -81,8 +96,8 @@ public class HospitalRunner {
                 "5. Migraine\n" +
                 "6. Heart Diseases\n" +
                 "Please Select : ");
-        String patientsCondition = dataBase.patientCondition[intScanner(scan) - 1];
-        String title = doctorTitle(patientsCondition);
+
+        return intScanner(scan);
 
     }
 
@@ -144,7 +159,7 @@ public class HospitalRunner {
 
         patient.setPatientCondition(findPatientCondition(actuelCondition));
         System.out.println(patient.getPatientID() + " " + patient.getName() + " " + patient.getSurName() +
-                " " + patient.getPatientCondition());
+                " " + dataBase.patientCondition[index]);
         return patient;
     }
 
